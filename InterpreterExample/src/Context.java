@@ -32,7 +32,7 @@ public class Context {
 	}
 
 	public void calculate() {
-		if (this.nextOp.equals("+")) {
+		if (this.nextOp.equals("+") || this.nextOp.equals("")) {
 			this.result += this.operator;
 		} else if (this.nextOp.equals("-")) {
 			this.result -= this.operator;
