@@ -22,5 +22,6 @@ public class Inventory extends Observable{
     
     public void returnBook(int index){
         inventory.get(index).equals(true);
+        this.notifyAllObservers();
     }
 }

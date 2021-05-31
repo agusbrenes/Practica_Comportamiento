@@ -10,7 +10,7 @@ package Problema5;
  *
  * @author Chuz2
  */
-public class Book {
+public class Book extends Observer{
     private String name;
     private String author;
     private String edition;
@@ -25,5 +25,13 @@ public class Book {
     
     public void equals(boolean available){
         this.available = available;
+    }
+
+    @Override
+    public void update() {
+        if (this.available)
+            System.out.println("El estado del libro " + this.name + "paso a estar Disponible");
+        else
+            System.out.println("El estado del libro " + this.name + "paso a estar No Disponible");
     }
 }

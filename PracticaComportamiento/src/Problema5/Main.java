@@ -13,9 +13,12 @@ public class Main {
     public static void main(String[] args){
         Observable obs = new Observable();
         
-        new User(obs);
+        Book book1 = new Book("The Hunger Games", "Suzanne Collins", "4th");
+        Book book2 = new Book("The Hunger Games", "Suzanne Collins", "3th");
         
-        System.out.println("Hmmmmm");
-        obs.setState(2);
+        book1.equals(false);
+        book2.equals(true);
+        
     }
 }
+

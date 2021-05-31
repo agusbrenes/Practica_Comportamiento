@@ -10,14 +10,10 @@ package Problema5;
  *
  * @author Chuz2
  */
-public class User extends Observer{
+public class User{
+    private Inventory inventory;
+    private Book book = null;
 
-    public User(Observable observable) {
-        this.observable = observable;
-        this.observable.attach(this);
-    }
-
-    @Override
     public void update() {
         System.out.println("Algo");
     }

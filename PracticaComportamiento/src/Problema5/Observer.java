@@ -11,6 +11,6 @@ package Problema5;
  * @author Chuz2
  */
 public abstract class Observer {
-    protected Observable observable;
+    protected Observable observable;    
     public abstract void update ();
 }
