@@ -3,14 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Problema5;
 
 /**
  *
  * @author Chuz2
  */
-public abstract class Observer {
-    protected Observable observable;
-    public abstract void update ();
+public class Main {
+    public static void main(String[] args){
+        Observable obs = new Observable();
+        
+        new User(obs);
+        
+        System.out.println("Hmmmmm");
+        obs.setState(2);
+    }
 }

@@ -6,26 +6,36 @@
 
 package Problema5;
 
+import java.util.LinkedList;
 import java.util.List;
 
 /**
  *
  * @author Chuz2
  */
-public abstract class Observable {
-    protected List<Observer> observers;
+public class Observable {
+    protected List<Observer> observers = new LinkedList<Observer>();
+    private int state;
 
-    public Observable(){
+    public int getState(){
+        return state;
+    }
     
+    public void setState(int state){
+        this.state = state;
+        notifyAllObservers();
     }
 
     public void attach(Observer obvs){
-    
+        observers.add(obvs);
     };
     public void dettach(Observer obvs){
-    
+        observers.remove(obvs);
     };
-    public void notify(){
-    
-    };
+ 
+    public void notifyAllObservers(){
+        for (Observer observer : observers){
+            observer.update();
+        }
+    }
 }

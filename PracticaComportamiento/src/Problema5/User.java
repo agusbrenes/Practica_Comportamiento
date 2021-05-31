@@ -10,6 +10,16 @@ package Problema5;
  *
  * @author Chuz2
  */
-public class User {
+public class User extends Observer{
+
+    public User(Observable observable) {
+        this.observable = observable;
+        this.observable.attach(this);
+    }
+
+    @Override
+    public void update() {
+        System.out.println("Algo");
+    }
     
 }
