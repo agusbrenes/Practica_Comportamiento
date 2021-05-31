@@ -16,7 +16,7 @@ public class Context {
 			case "eight" -> 8;
 			case "nine" -> 9;
 			default -> -1;
-		}
+		};
 	}
 
 	public void setOperator(int operator) {
@@ -29,5 +29,17 @@ public class Context {
 		} else if (operation.equalsIgnoreCase("minus")) {
 			this.nextOp = "-";
 		}
+	}
+
+	public void calculate() {
+		if (this.nextOp.equals("+")) {
+			this.result += this.operator;
+		} else if (this.nextOp.equals("-")) {
+			this.result -= this.operator;
+		}
+	}
+
+	public int getResult() {
+		return this.result;
 	}
 }
