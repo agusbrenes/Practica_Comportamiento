@@ -13,12 +13,18 @@ public class Main {
     public static void main(String[] args){
         Observable obs = new Observable();
         
+        Inventory inv = new Inventory();
+        User user = new User(inv);
+        
         Book book1 = new Book("The Hunger Games", "Suzanne Collins", "4th");
-        Book book2 = new Book("The Hunger Games", "Suzanne Collins", "3th");
+        Book book2 = new Book("The Hunger Games Part II", "Suzanne Collins", "3th");
+        inv.addBook(book1);
+        inv.addBook(book2);
         
-        book1.equals(false);
-        book2.equals(true);
-        
+        user.requestBook("The Hunger Games");
+        user.returnBook();
+        user.requestBook("The Hunger Games Part II");
+        user.returnBook();
     }
 }
 

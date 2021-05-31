@@ -23,15 +23,23 @@ public class Book extends Observer{
         this.available = true;
     }
     
-    public void equals(boolean available){
+    public void setAvailable(boolean available){
         this.available = available;
+    }
+    
+    public String getName() {
+        return name;
+    }
+    
+    public boolean isAvailable() {
+        return available;
     }
 
     @Override
     public void update() {
         if (this.available)
-            System.out.println("El estado del libro " + this.name + "paso a estar Disponible");
+            System.out.println("El estado del libro " + this.name + " paso a estar Disponible");
         else
-            System.out.println("El estado del libro " + this.name + "paso a estar No Disponible");
+            System.out.println("El estado del libro " + this.name + " paso a estar No Disponible");
     }
 }

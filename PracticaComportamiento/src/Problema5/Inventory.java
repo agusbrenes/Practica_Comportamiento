@@ -6,22 +6,48 @@
 
 package Problema5;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  *
  * @author Chuz2
  */
 public class Inventory extends Observable{
-    private List<Book> inventory;
+    private ArrayList<Book> inventory;
     
-    public Book loanBook(int index){
-        inventory.get(index).equals(false);
-        return inventory.get(index);
+    public Inventory() {
+        inventory = new ArrayList();
     }
     
-    public void returnBook(int index){
-        inventory.get(index).equals(true);
-        this.notifyAllObservers();
+    public void addBook(Book b) {
+        inventory.add(b);
+        super.attach(b);
+    }
+    
+    public Book loanBook(String bookname){
+        Book b = null;
+        for (Book book : inventory) {
+            if (book.getName().equals(bookname)) {
+                b = book;
+                break;
+            }
+        }
+        
+        if (b == null) {
+            return null;
+        }
+        
+        if (b.isAvailable()){
+            b.setAvailable(false);
+            b.update();
+            return b;
+        } else {
+            return null;
+        }        
+    }
+    
+    public void returnBook(Book book){
+        book.setAvailable(true);
+        book.update();
     }
 }

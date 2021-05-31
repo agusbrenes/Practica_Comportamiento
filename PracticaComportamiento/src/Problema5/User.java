@@ -13,9 +13,24 @@ package Problema5;
 public class User{
     private Inventory inventory;
     private Book book = null;
-
-    public void update() {
-        System.out.println("Algo");
+    
+    public User(Inventory inventory) {
+        this.inventory = inventory;
     }
     
+    public Book getBook() {
+        return book;
+    }
+
+    public void requestBook(String bookname){
+        this.book = inventory.loanBook(bookname);
+        if (book == null) {
+            System.out.println("El libro no estaba disponible...");
+        }
+    }
+    
+    public void returnBook() {
+        inventory.returnBook(book);
+        book = null;
+    }
 }
