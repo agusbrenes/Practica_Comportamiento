@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class OperationExpression implements Expression {
     private String operator;
     private ArrayList<Expression> expressions;
