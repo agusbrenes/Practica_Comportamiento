@@ -1,6 +1,12 @@
 public class Interpreter {
+    
+    String[] operation;
 
-    public static void Interpreter(String[] operation) {
+    public Interpreter(String[] operation) {
+        this.operation = operation;
+    }    
+    
+    public void interpret() {
         Context context = new Context();
         Expression exp;
         
