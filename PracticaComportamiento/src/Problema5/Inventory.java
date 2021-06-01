@@ -45,20 +45,4 @@ public class Inventory extends Observable {
         book.setAvailable(true);
         notifyAllObservers();
     }
-    
-    @Override
-    public void attach(Observer obvs){
-        this.observers.add(obvs);
-    };
-    @Override
-    public void dettach(Observer obvs){
-        this.observers.remove(obvs);
-    };
- 
-    @Override
-    public void notifyAllObservers(){
-        for (Observer observer : this.observers){
-            observer.update();
-        }
-    }
 }
