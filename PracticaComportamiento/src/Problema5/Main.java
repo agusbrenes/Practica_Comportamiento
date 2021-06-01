@@ -11,7 +11,6 @@ package Problema5;
  */
 public class Main {
     public static void main(String[] args){
-        Observable obs = new Observable();
         
         Inventory inv = new Inventory();
         User user = new User(inv);

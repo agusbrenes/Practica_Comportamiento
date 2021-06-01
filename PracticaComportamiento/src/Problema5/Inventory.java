@@ -6,48 +6,59 @@
 
 package Problema5;
 
-import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 
 /**
  *
  * @author Chuz2
  */
-public class Inventory extends Observable{
-    private ArrayList<Book> inventory;
+public class Inventory extends Observable {
+    private HashMap<String, Book> inventory;
     
     public Inventory() {
-        inventory = new ArrayList();
+        super();
+        this.inventory = new HashMap();
     }
     
     public void addBook(Book b) {
-        inventory.add(b);
-        super.attach(b);
+        this.inventory.put(b.getName(), b);
+    }
+    
+    public Collection<Book> getBooks() {
+        return this.inventory.values();
     }
     
     public Book loanBook(String bookname){
-        Book b = null;
-        for (Book book : inventory) {
-            if (book.getName().equals(bookname)) {
-                b = book;
-                break;
-            }
-        }
-        
-        if (b == null) {
-            return null;
-        }
-        
-        if (b.isAvailable()){
-            b.setAvailable(false);
-            b.update();
-            return b;
+        Book book = this.inventory.get(bookname);
+        if (book.isAvailable()) {
+            book.setAvailable(false);
+            notifyAllObservers();
+            return book;
         } else {
+            notifyAllObservers();
             return null;
-        }        
+        }      
     }
     
     public void returnBook(Book book){
         book.setAvailable(true);
-        book.update();
+        notifyAllObservers();
+    }
+    
+    @Override
+    public void attach(Observer obvs){
+        this.observers.add(obvs);
+    };
+    @Override
+    public void dettach(Observer obvs){
+        this.observers.remove(obvs);
+    };
+ 
+    @Override
+    public void notifyAllObservers(){
+        for (Observer observer : this.observers){
+            observer.update();
+        }
     }
 }
